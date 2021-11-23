@@ -3,7 +3,7 @@
  Aqui encontraras todo mi progreso con el lenguaje de progrmacion C
 <div style="padding: 0 200px">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/1200px-C_Programming_Language.svg.png" width="60" style="display: inline-block; vertical-aling: middle">
-    <h2 style="display: inline-block; vertical-aling: middle">Language<h2>
+    Language
 </div>
 
 ## ¿Que compilador utilizo?
