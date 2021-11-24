@@ -9,16 +9,16 @@ main(){
 	
 	setlocale(LC_CTYPE, "Spanish");
 	
-	//Pedimos por pantalla el numero de tablas, comprobando que el dato introducido no sea menor a 0.
+	//Pedimos por pantalla el número de tablas, comprobando que el dato introducido no sea menor a 0.
 	printf("Introduce una numero de tablas (0 para terminar):\n");
 	do{
 		scanf("%d", &tables);
 		fflush(stdin);		
 	}while(tables < 0);
 	
-	//Controlamos que mientras la varable que indica el numero de tablas sea mayor a 0 (es imposible que sea mayor a 0), haga las instrucciones contenidas
+	//Controlamos que mientras la varable que indica el número de tablas sea mayor a 0 (es imposible que sea mayor a 0), haga las instrucciones contenidas
 	while(tables > 0){
-		//Pedimos por pantalla tamaño de la tabla, comprobando que el dato introducido no sea menor a 1.
+		//Pedimos por pantalla el tamaño de la tabla, comprobando que el dato introducido no sea menor a 1.
 		printf("Introduce tamaño de la tabla:\n");
 		do{
 			scanf("%d", &maxFactor);
@@ -35,7 +35,7 @@ main(){
 				printf("\n%d x %d = %d", i, j, result); //E imprimimos el resultado con su operacion por pantalla
 			}
 			printf("\n");
-			//Añadimos la separacion entre tablas
+			//Añadimos la separación entre tablas
 			for(j = 1; j <= MIDDLE; j++){
 				printf("=");
 			}
