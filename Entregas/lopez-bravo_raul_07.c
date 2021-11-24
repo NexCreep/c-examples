@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <locale.h>
 
-#define MIDDLE 11
+#define MIDDLE 20
 
 main(){
 	int tables = 0, maxFactor = 0, acum = 0, result = 0, i = 0, j = 0;
