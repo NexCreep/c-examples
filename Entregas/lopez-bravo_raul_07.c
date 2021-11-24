@@ -61,7 +61,7 @@ main(){
 		printf("\n");
 		system("pause");
 		
-	}while(tables > 0);//Completara el bucle hasta el dato introducido sea 0 (ya que menor de nuevo es imposible)
+	}while(tables > 0);//Completara el bucle hasta el dato introducido en la variable que controla las tablas sea 0 (ya que menor de nuevo es imposible)
 	
 	return 0;
 }
