@@ -24,7 +24,10 @@ main(){
 			scanf("%d", &maxFactor);
 			fflush(stdin);		
 		}while(maxFactor < 1);
-			
+		
+		
+		//Reiniciamos el acumulador
+		acum = 0;	
 		//Controlamos a tabla de mutiplicar
 		for(i = 1; i <= tables; i++){
 			//Controlamos el tamaño de la tabla
