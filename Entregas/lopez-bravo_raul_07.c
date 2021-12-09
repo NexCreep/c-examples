@@ -25,6 +25,8 @@ main(){
 			fflush(stdin);		
 		}while(maxFactor < 1);
 			
+		//Reinicizamos el acumlador
+		acum = 0;
 		//Controlamos a tabla de mutiplicar
 		for(i = 1; i <= tables; i++){
 			//Controlamos el tamaño de la tabla
