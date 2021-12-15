@@ -3,19 +3,16 @@
 #include <locale.h>
 
 #define TAM 51
-#define CANT 5
+#define CANT 10
 
 main(){
 	char names[CANT][TAM];
-	char name[TAM] = "";
 	int i = 0, j = 0;
 	
 	setlocale(LC_ALL, "Spanish");
 	
 	for(i = 0; i < CANT; i++){
-		for(j = 0; j < TAM; j++){
-			names[i][j] = ' ';
-		}
+		strcpy(names[i], "");
 	}
 	
 	puts("Introduce nombre y apellido");
