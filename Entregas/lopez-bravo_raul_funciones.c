@@ -1,16 +1,13 @@
 #include <stdio.h>
+#include <locale.h>
 
 int inputPosInt();
 int maxTwoInt(int num1, int num2);
 void printMaxTwoInt();
 
+/*EJERCICIO 4*/
 main(){
-	int num1 = 0, num2 = 0;
-	
-	num1 = inputPosInt();
-	num2 = inputPosInt();
-	
-	printf("NUMERO MAYOR = %d\n\n", maxTwoInt(num1, num2));
+	setlocale(LC_CTYPE, "Spanish");
 	
 	printMaxTwoInt();
 	
@@ -18,11 +15,12 @@ main(){
 }
 
 /*FUNCIONES PURAS*/
+/*EJERCICIO 1*/
 int inputPosInt(){
 	int num = 0;
 	
 	do{
-		printf("Introduce un numero positivo: ");
+		printf("Introduce un número positivo: ");
 		scanf("%d", &num);
 		fflush(stdin);
 		
@@ -30,22 +28,20 @@ int inputPosInt(){
 	
 	return num;
 }
-
+/*EJERCICIO 2*/
 int maxTwoInt(int num1, int num2){
-	if (num1 >= num2)
-		return num1;
-	else
-		return num2;
+	int max = 0;
 	
+	max = num1 >= num2 ? num1 : num2;
+	
+	return max;
 }
 
 /*FUNCIONES PROCEDIMENTALES*/
+/*EJERCICIO 3*/
 void printMaxTwoInt(){
-	int num1 = 0, num2 = 0;
 	
-	num1 = inputPosInt();
-	num2 = inputPosInt();
+	printf("NÚMERO MAYOR = %d\n", maxTwoInt(inputPosInt(), inputPosInt()));
 	
-	printf("NUMERO MAYOR = %d\n\n", maxTwoInt(num1, num2));
-	
+	return;
 }

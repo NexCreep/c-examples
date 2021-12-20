@@ -16,7 +16,7 @@ main(){
 		fflush(stdin);		
 	}while(tables < 0);
 	
-	//Controlamos que mientras la varable que indica el número de tablas sea mayor a 0 (es imposible que sea mayor a 0), haga las instrucciones contenidas
+	//Controlamos que mientras la variable que indica el número de tablas sea mayor a 0 (es imposible que sea mayor a 0), haga las instrucciones contenidas
 	while(tables > 0){
 		//Pedimos por pantalla el tamaño de la tabla, comprobando que el dato introducido no sea menor a 1.
 		printf("Introduce tamaño de la tabla:\n");
