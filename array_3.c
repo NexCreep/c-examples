@@ -14,6 +14,8 @@ main(){
 	
 	setlocale(LC_CTYPE, "Spanish");
 	
+	printf("%d", arrayInt[0]);
+	
 	iE = TAM - 1;
 	iMedio = iE /2;
 	
