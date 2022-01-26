@@ -72,19 +72,19 @@ void locateDigInt(int array[], int digit, int *result){
 	*result = flag;
 }
 
-void locateDigStr(int array[], int digit, char *result){
+void locateDigStr(int array[], int digit, char result[]){
 	int i = 0;
 	char flag[5]="";
 	
 	i=0;
-	flag = "cero";
+	strcpy(flag, "cero");
 	while(i < TAM && strcmp(flag, "cero")){
 		if(array[i] == digit)
-			strcpy(flag, "uno")
+			strcpy(flag, "uno");
 		i++;
 	}	
 
-	*result = flag;
+	strcpy(result, flag);
 }
 
 ////////////////////////////////

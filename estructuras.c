@@ -13,18 +13,28 @@
 
 
 main(){
+	//Declaración de tipo
+	struct fecha {
+		short dia;
+		short mes;
+		short y;
+	};
+	
 	struct cd {
 		char nomGrupo[25];
 		char nomCD[20];
-		char fecha[11];
+		struct fecha fechaCD;
 		int numSong;
 	};
 	
-	struct cd cd1 = {"", "", "", 0};
-	struct cd cd2 = {"", "", "", 0};
+	// Declaración e inicialización de la variable
+	struct cd cd1 = {"", "", {1, 1, 1999}, 0}, cd2;
+	cd2 = cd1;
 	
 	cd1.numSong = 3;
-	cd2.numSong = 5;
+	cd1.fechaCD.dia = 26;
+	cd1.fechaCD.mes = 1;
+	cd1.fechaCD.y = 2021;
 	
 	printf("%d \n", cd1.numSong);
 	printf("%d \n", cd2.numSong);
