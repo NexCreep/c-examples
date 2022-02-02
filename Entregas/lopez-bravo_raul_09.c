@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <locale.h>
+#include <string.h>
 
 #define TAM 10
 
 void moreDigit(int array[], int *result);
 void locateDigInt(int array[], int digit, int *result);
+void locateDigStr(int array[], int digit, char result[]);
 
 main(){
 	int arrayInt[TAM] = {0, 0, 9, 4, 1, 2, 2, 2, 7, 0};
@@ -24,12 +26,13 @@ main(){
 	r=0;
 	locateDigInt(arrayInt, digit, &r);
 	if(r)
-		printf("%d se encuentra en el array", digit);
+		printf("%d se encuentra en el array\n", digit);
 	else
-		printf("%d no se encuentra en el array", digit);
+		printf("%d no se encuentra en el array\n", digit);
 		
-	locateDigStr(arrayInt, digit, &r);
-	if(strcmp(r, "uno"))
+	locateDigStr(arrayInt, digit, rstr);
+	printf("(%s)\n\n")
+	if(!strcmp(rstr, "uno"))
 		printf("%d se encuentra en el array", digit);
 	else
 		printf("%d no se encuentra en el array", digit);
