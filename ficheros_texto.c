@@ -1,4 +1,6 @@
 /*
+	Ficheros de texto
+
 	#include <stdio.h>
 	
 	main(){
@@ -27,17 +29,48 @@
 		-	"w+": Lectura-Escritura [Te borra desde un principio el contenido, si no existe lo crea]
 		-	"a+": Lectura-Añadir [Si existe, escribe desde el final del fichero, sino, lo crea]
 		
+	Funciones escritura:
+		fputc(char, nombre_int)	; [void]
+		fputs(string, nombre_int); [void]
+		
+	Funciones lectura:
+		char x = fgetc(nombre_int); [char]
+		fgets(string, nChar, nombre_int); [void]
+		
+		
 */
 #include <stdio.h>
 
+#define TAM 11
 main(){
-	FILE *fich;
-	fich = fopen("fichero.txt", "r");
 	
-	fputc('&', fich);
-	printf("%c", fgetc(fich));
+	char c = ' ';
+	char s[TAM] = "";
+	
+	FILE *fich;
+	fich = fopen("fichero.txt", "w+");
+	
+	fputs("Primera\n", fich);
+	fputs("Segunda\n", fich);
+	fputs("Tercera\n", fich);
+	
+	rewind(fich);
+	
+	/*fgets(s, TAM, fich);
+	while(!feof(fich)){
+		printf("%s\n", s);
+		fgets(s, TAM, fich);
+	}*/
+	
+	c = fgetc(fich);
+	while(!feof(fich)){
+		printf("%c", c);
+		c = fgetc(fich);		
+	};
 	
 	fclose(fich);
+	
+	printf("Final de proceso");
 	
 	return 0;
 }
