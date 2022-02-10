@@ -6,7 +6,7 @@
 #define REM 210
 
 //Ejecución
-main(){
+int main(){
 	char name[REM] = " ";
 	
 	setlocale(LC_ALL, "es_ES");

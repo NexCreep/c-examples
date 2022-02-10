@@ -6,9 +6,10 @@
 #include <string.h>
 #include <locale.h>
 
-#define TAM 12
+#define TAM 50
 
 int strinstr(char string[], char substring[]);
+short cuentaPal(char cadena[], const char subCadena[]);
 
 main(){
 	int cant = 0;
@@ -24,6 +25,7 @@ main(){
 	
 	
 	cant = strinstr(userStr, userSubStr);
+	//cant = cuentaPal(userStr, userSubStr);
 	
 	printf("La subcadena \"%s\" aparece %d %s en la cadena \"%s\".\n",userSubStr, cant, cant == 1 ? "vez" : "veces", userStr);
 	
@@ -54,3 +56,20 @@ int strinstr(char string[], char substring[]){
 	return c;
 }
 
+
+short cuentaPal(char cadena[], const char subCadena[]){
+	short num=0;
+	char change= ' ';
+	
+	change = subCadena[0] != ' ' ? ' ': '$';
+	
+	if(strlen(cadena) > 0 && strlen(subCadena) > 0){
+		while (strstr(cadena, subCadena) != NULL){
+			num++;
+			strcpy(cadena, strstr(cadena, subCadena));
+			cadena[0] = ' ';
+		}
+	}
+	
+	
+}

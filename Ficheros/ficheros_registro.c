@@ -69,16 +69,6 @@ main(){
 	cd1.numCanc++;
 	fwrite(&cd1, sizeof(cd1), 1, fich);
 	
-	strcpy(cd1.nombre, "Artista 5");
-	strcpy(cd1.titulo, "Disco 5");
-	cd1.numCanc++;
-	fwrite(&cd1, sizeof(cd1), 1, fich);
-	
-	strcpy(cd1.nombre, "Artista 6");
-	strcpy(cd1.titulo, "Disco 6");
-	cd1.numCanc++;
-	fwrite(&cd1, sizeof(cd1), 1, fich);
-	
 	rewind(fich);
 	
 	fread(&cd1, sizeof(cd1), 1, fich);
