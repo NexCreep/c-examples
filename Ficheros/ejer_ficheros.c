@@ -17,13 +17,17 @@
 	Fin proceso
 */
 #include <stdio.h>
+#include <string.h>
 #include <locale.h>
 
 #define TAM 150
+#define TXT 50
 
 int getInt(const char message[]);
 
 main(){
+	char text[TXT] = "";
+	
 	int numArray[TAM];
 	int userInt = 0, result = 0;
 	int i = 0, nexti = 0;
@@ -36,13 +40,14 @@ main(){
 		numArray[i] = 0;
 	
 	
-	fich = fopen("operaciones.txt", "w");
+	fich = fopen("operaciones.txt", "w+");
 	
 	//BLOQUE DE SUMA
 	i = nexti;
 	
-	puts("Suma: 0");
-	userInt = getInt("Número: " );
+	fputs("Suma: 0\n", fich);
+	strcat(text, "Numero")
+	userInt = getInt();
 	while(userInt != -1){
 		numArray[nexti] = userInt;
 		nexti++;	
@@ -101,6 +106,8 @@ main(){
 	printf("\nFin proceso");
 	return 0;
 }
+
+void setCustom
 
 int getInt(const char message[]){
 	int input = 0;

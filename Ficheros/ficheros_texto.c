@@ -42,6 +42,9 @@
 #include <stdio.h>
 
 #define TAM 11
+
+#define desplz(n) ((long)(sizeof(cd1)) * (n-1))
+
 main(){
 	
 	char c = ' ';
