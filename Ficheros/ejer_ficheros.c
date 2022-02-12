@@ -46,8 +46,8 @@ main(){
 	i = nexti;
 	
 	fputs("Suma: 0\n", fich);
-	strcat(text, "Numero")
-	userInt = getInt();
+	strcat(text, "Numero");
+	userInt = getInt("Numero: ");
 	while(userInt != -1){
 		numArray[nexti] = userInt;
 		nexti++;	
@@ -76,7 +76,6 @@ main(){
 	
 	result = numArray[i];
 	i++;
-	printf("[%d]\n", result);
 	for (i; i<nexti; i++)
 		result = result - numArray[i];
 		
@@ -107,7 +106,6 @@ main(){
 	return 0;
 }
 
-void setCustom
 
 int getInt(const char message[]){
 	int input = 0;
