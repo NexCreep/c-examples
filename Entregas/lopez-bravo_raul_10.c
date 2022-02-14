@@ -8,7 +8,7 @@
 
 #define TAM 50
 
-int strinstr(char string[], char substring[]);
+int strinstr(const char string[], const char substring[]);
 short cuentaPal(char cadena[], const char subCadena[]);
 
 main(){
@@ -33,7 +33,7 @@ main(){
 	return 0;
 }
 
-int strinstr(char string[], char substring[]){
+int strinstr(const char string[], const char substring[]){
 	char cmpString[TAM] = "";
 	int i = 0, j = 0, k = 0;
 	int c = 0;
@@ -71,5 +71,5 @@ short cuentaPal(char cadena[], const char subCadena[]){
 		}
 	}
 	
-	
+	return num;
 }
