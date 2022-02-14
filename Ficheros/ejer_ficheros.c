@@ -17,20 +17,30 @@
 	Fin proceso
 */
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <locale.h>
 
 #define TAM 150
 #define TXT 50
 
+#define deplz(n) ((long)(sizeof(file1) * (n-1)))
+
 int getInt(const char message[]);
 
 main(){
-	char text[TXT] = "";
+	struct file{
+		char num[TXT];
+	};
 	
+	char sample[TXT] = "";
+	char charI[TXT] = "";
+
 	int numArray[TAM];
 	int userInt = 0, result = 0;
 	int i = 0, nexti = 0;
+	
+	struct file file1 = {""};
 	
 	FILE *fich;
 	
@@ -40,74 +50,162 @@ main(){
 		numArray[i] = 0;
 	
 	
-	fich = fopen("operaciones.txt", "w+");
-	
 	//BLOQUE DE SUMA
+	fich = fopen("operaciones.txt", "w+");
 	i = nexti;
+	strcpy(sample ,"Suma: 0");
 	
-	fputs("Suma: 0\n", fich);
-	strcat(text, "Numero")
-	userInt = getInt();
-	while(userInt != -1){
-		numArray[nexti] = userInt;
-		nexti++;	
-		userInt = getInt("Número: ");
-		fputs("Número: ", fich);
-		
-	}
-	
-	result = numArray[i];
-	i++;
-	for (i; i<nexti; i++)
-		result = numArray[i] + result;
-		
-	printf("Suma: %d\n", result);
-	
-	//BLOQUE DE RESTA
-	i = nexti;
+	memset(file1.num, ' ', sizeof(file1.num));
+	strcpy(file1.num, sample);
+	fwrite(file1.num, sizeof(file1), 1, fich);
 	
 	userInt = getInt("Número: ");
 	while(userInt != -1){
+		
+		memset(file1.num, ' ', sizeof(file1.num));
+		strcpy(file1.num, "\nNúmero: ");
+		itoa(userInt, charI, 10);
+		strcat(file1.num, charI);
+		fwrite(file1.num, sizeof(file1), 1, fich);
+		
 		numArray[nexti] = userInt;
-		nexti++;	
+		nexti++;
 		userInt = getInt("Número: ");
 		
 	}
-	
-	result = numArray[i];
-	i++;
-	printf("[%d]\n", result);
-	for (i; i<nexti; i++)
-		result = result - numArray[i];
-		
-	printf("Resta: %d\n", result);
-	
-	//BLOQUE DE MULTIPLICACIÓN
-	i = nexti;
-	
-	userInt = getInt("Número: ");
-	while(userInt != -1){
-		numArray[nexti] = userInt;
-		nexti++;	
-		userInt = getInt("Número: ");
-		
-	}
-	
 	fclose(fich);
 	
 	result = numArray[i];
 	i++;
 	for (i; i<nexti; i++)
-		result = numArray[i] * result;
-		
-	printf("Resta: %d\n", result);
-
+		result = numArray[i] + result;
 	
+	fich = fopen("operaciones.txt", "r+");
+	
+	fread(&file1, sizeof(file1), 1, fich);
+	while(!feof(fich) && strcmp(file1.num , sample))
+		fread(&file1, sizeof(file1), 1, fich);
+	
+	
+	fseek(fich, deplz(0), SEEK_CUR);
+	
+	memset(file1.num, ' ', sizeof(file1.num));
+	strcpy(file1.num, "Suma: ");
+	itoa(result, charI, 10);
+	strcat(file1.num, charI);
+	fwrite(file1.num, sizeof(file1), 1, fich);
+	
+	fclose(fich);
+	
+	
+	//BLOQUE DE RESTA
+	fich = fopen("operaciones.txt", "a");
+	i = nexti;
+	memset(sample, ' ', sizeof(sample));
+	strcpy(sample ,"\nResta: 0");
+	
+	memset(file1.num, ' ', sizeof(file1.num));
+	strcpy(file1.num, sample);
+	fwrite(file1.num, sizeof(file1), 1, fich);
+	
+	userInt = getInt("Número: ");
+	while(userInt != -1){
+		
+		//memset(file1.num, ' ', sizeof(file1.num));
+		strcpy(file1.num, "\nNúmero: ");
+		itoa(userInt, charI, 10);
+		strcat(file1.num, charI);
+		fwrite(file1.num, sizeof(file1), 1, fich);
+		
+		numArray[nexti] = userInt;
+		nexti++;
+		userInt = getInt("Número: ");
+		
+	}
+	fclose(fich);
+	
+	result = numArray[i];
+	i++;
+	for (i; i<nexti; i++)
+		result = result - numArray[i];
+	
+	fich = fopen("operaciones.txt", "r+");
+	
+	fread(&file1, sizeof(file1), 1, fich);
+	while(!feof(fich) && strcmp(file1.num , sample)){
+		fread(&file1, sizeof(file1), 1, fich);
+	}
+	
+	fseek(fich, deplz(0), SEEK_CUR);
+	
+	memset(file1.num, ' ', sizeof(file1.num));
+	strcpy(file1.num, "Resta: ");
+	itoa(result, charI, 10);
+	strcat(file1.num, charI);
+	fwrite(file1.num, sizeof(file1), 1, fich);
+	
+	fclose(fich);
+	
+	
+	//BLOQUE DE MULTIPLICACIÓN
+	fich = fopen("operaciones.txt", "a");
+	i = nexti;
+	memset(sample, ' ', sizeof(sample));
+	strcpy(sample ,"\nMultiplicación: 0");
+	
+	memset(file1.num, ' ', sizeof(file1.num));
+	strcpy(file1.num, sample);
+	fwrite(file1.num, sizeof(file1), 1, fich);
+	
+	printf("\n(%s)\n", file1.num);
+	printf("\n(%s)\n", sample);
+	
+	userInt = getInt("Número: ");
+	while(userInt != -1){
+		
+		memset(file1.num, ' ', sizeof(file1.num));
+		strcpy(file1.num, "\nNúmero: ");
+		itoa(userInt, charI, 10);
+		strcat(file1.num, charI);
+		fwrite(file1.num, sizeof(file1), 1, fich);
+		
+		numArray[nexti] = userInt;
+		nexti++;
+		userInt = getInt("Número: ");
+		
+	}
+	fclose(fich);
+	
+	result = numArray[i];
+	i++;
+	for (i; i<nexti; i++)
+		result = result * numArray[i];
+	printf("\n[%d]\n", result);
+	
+	fich = fopen("operaciones.txt", "r+");
+	fseek(fich, deplz(0), SEEK_SET);
+	
+	fread(&file1, sizeof(file1), 1, fich);
+	while(!feof(fich) && strcmp(file1.num , sample)){
+		printf("%s", file1.num);
+		printf("\n[%d]\n", strcmp(file1.num, sample));
+		fread(&file1, sizeof(file1), 1, fich);
+	}
+	
+	fseek(fich, deplz(0), SEEK_CUR);
+	
+	memset(file1.num, ' ', sizeof(file1.num));
+	strcpy(file1.num, "Multiplicación: ");
+	itoa(result, charI, 10);
+	strcat(file1.num, charI);
+	fwrite(file1.num, sizeof(file1), 1, fich);
+	
+	fclose(fich);
+	
+
 	printf("\nFin proceso");
 	return 0;
 }
-
-void setCustom
 
 int getInt(const char message[]){
 	int input = 0;
