@@ -53,9 +53,10 @@ main(){
 	//BLOQUE DE SUMA
 	fich = fopen("operaciones.txt", "w+");
 	i = nexti;
+	strcpy(sample, "");
 	strcpy(sample ,"Suma: 0");
 	
-	memset(file1.num, ' ', sizeof(file1.num));
+	strcpy(file1.num, "");
 	strcpy(file1.num, sample);
 	fwrite(file1.num, sizeof(file1), 1, fich);
 	
@@ -81,6 +82,7 @@ main(){
 		result = numArray[i] + result;
 	
 	fich = fopen("operaciones.txt", "r+");
+	fseek(fich, deplz(0), SEEK_SET);
 	
 	fread(&file1, sizeof(file1), 1, fich);
 	while(!feof(fich) && strcmp(file1.num , sample))
@@ -101,10 +103,10 @@ main(){
 	//BLOQUE DE RESTA
 	fich = fopen("operaciones.txt", "a");
 	i = nexti;
-	memset(sample, ' ', sizeof(sample));
+	strcpy(sample, "");
 	strcpy(sample ,"\nResta: 0");
 	
-	memset(file1.num, ' ', sizeof(file1.num));
+	strcpy(file1.num, "");
 	strcpy(file1.num, sample);
 	fwrite(file1.num, sizeof(file1), 1, fich);
 	
@@ -130,6 +132,7 @@ main(){
 		result = result - numArray[i];
 	
 	fich = fopen("operaciones.txt", "r+");
+	fseek(fich, deplz(0), SEEK_SET);
 	
 	fread(&file1, sizeof(file1), 1, fich);
 	while(!feof(fich) && strcmp(file1.num , sample)){
@@ -150,15 +153,12 @@ main(){
 	//BLOQUE DE MULTIPLICACIÓN
 	fich = fopen("operaciones.txt", "a");
 	i = nexti;
-	memset(sample, ' ', sizeof(sample));
+	strcpy(sample, "");
 	strcpy(sample ,"\nMultiplicación: 0");
 	
-	memset(file1.num, ' ', sizeof(file1.num));
+	strcpy(file1.num, "");
 	strcpy(file1.num, sample);
 	fwrite(file1.num, sizeof(file1), 1, fich);
-	
-	printf("\n(%s)\n", file1.num);
-	printf("\n(%s)\n", sample);
 	
 	userInt = getInt("Número: ");
 	while(userInt != -1){
@@ -180,17 +180,14 @@ main(){
 	i++;
 	for (i; i<nexti; i++)
 		result = result * numArray[i];
-	printf("\n[%d]\n", result);
 	
 	fich = fopen("operaciones.txt", "r+");
 	fseek(fich, deplz(0), SEEK_SET);
 	
 	fread(&file1, sizeof(file1), 1, fich);
-	while(!feof(fich) && strcmp(file1.num , sample)){
-		printf("%s", file1.num);
-		printf("\n[%d]\n", strcmp(file1.num, sample));
+	while(!feof(fich) && strcmp(file1.num , sample))
 		fread(&file1, sizeof(file1), 1, fich);
-	}
+	
 	
 	fseek(fich, deplz(0), SEEK_CUR);
 	
