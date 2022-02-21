@@ -38,6 +38,11 @@
 		fgets(string, nChar, nombre_int); [void]
 		
 		
+	Funciones extra:
+		rename(fichOrig, fichReg); //Renombrar
+		remove(fichero_ext); //Borrar
+		
+		
 */
 #include <stdio.h>
 

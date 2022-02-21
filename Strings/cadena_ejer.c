@@ -34,5 +34,7 @@ main(){
 		fflush(stdin);
 	}
 	
+	memset()
+	
 	return 0;
 }
