@@ -3,6 +3,7 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #include <locale.h>
 
@@ -15,8 +16,9 @@ main(){
 	while(1){	
 		time(&now);
 		strftime(buffer, TAM, "%H:%M:%S", localtime(&now));
+		printf("%s\n", buffer);
+		system("timeout 1 > nul");
 		system("cls");
-		printf("%s", buffer);
 	}
 	
 	return 0;

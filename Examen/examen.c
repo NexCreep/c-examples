@@ -16,19 +16,20 @@
 
 #define TAM 11
 
+typedef int num;
+
+typedef struct {
+	char strA[TAM];
+	char strB[TAM];
+	char strC[TAM];
+} reg;
+
 main(){
-	struct reg {
-		char strA[TAM];
-		char strB[TAM];
-		char strC[TAM];
-	};
-	
 	FILE *fich;
 	
-	
-	struct reg regUser = {"", "", ""};
-	char userStr[TAM], cmpBuffer[TAM];
-	int strCount = 0, i = 0;
+	reg regUser = {"", "", ""};
+	char userStr[TAM] = "";
+	num strCount = 0, i = 0;
 	
 	setlocale(LC_ALL, "Spanish");
 	
@@ -58,40 +59,17 @@ main(){
 	printf("Cadena a buscar (máx. %d %s): ", TAM-1, TAM-1 != 1 ? "caracteres" : "caracter");
 	gets(userStr);
 	
-	strcpy(cmpBuffer, userStr);
-	
-	for(i=0; i<strlen(cmpBuffer); i++){
-		if(!isupper(cmpBuffer[i]))
-			cmpBuffer[i]= toupper(cmpBuffer[i]);
-	}
-	
+	strCount = 0;
 	fread(&regUser, sizeof(regUser), 1, fich);
-	while(!feof(fich)){
-		for(i=0; i<strlen(regUser.strA); i++){
-			if(!isupper(regUser.strA[i]))
-				regUser.strA[i]	= toupper(regUser.strA[i]);
-		}
-		
-		strCount = !strcmp(regUser.strA, cmpBuffer) ? strCount+1 : strCount;
-		
-		for(i=0; i<strlen(regUser.strB); i++){
-			if(!isupper(regUser.strB[i]))
-				regUser.strB[i]	= toupper(regUser.strB[i]);
-		}
-		
-		strCount = !strcmp(regUser.strB, cmpBuffer) ? strCount+1 : strCount;
-		
-		for(i=0; i<strlen(regUser.strC); i++){
-			if(!isupper(regUser.strC[i]))
-				regUser.strC[i]	= toupper(regUser.strC[i]);
-		}
-		
-		strCount = !strcmp(regUser.strC, cmpBuffer) ? strCount+1 : strCount;
+	while(!feof(fich)){		
+		strCount = !stricmp(regUser.strA, userStr) ? strCount+1 : strCount;
+		strCount = !stricmp(regUser.strB, userStr) ? strCount+1 : strCount;
+		strCount = !stricmp(regUser.strC, userStr) ? strCount+1 : strCount;
 		
 		fread(&regUser, sizeof(regUser), 1, fich);
 	}
 	
-	printf("La cadena %s ha sido encontrada %d %s.", userStr, strCount, strCount != 1 ? "veces" : "vez");
+	printf("La cadena \"%s\" ha sido encontrada %d %s.", userStr, strCount, strCount != 1 ? "veces" : "vez");
 	
 	fclose(fich);
 	
